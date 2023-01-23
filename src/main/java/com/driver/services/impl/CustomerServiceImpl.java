@@ -59,7 +59,7 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new Exception("No cab available!");
 		}
 		TripBooking tripBooking = new TripBooking(fromLocation,toLocation,distanceInKm);
-		Customer customer = customerRepository2.getOne(customerId);
+		Customer customer = customerRepository2.findById(customerId).get();
 		tripBooking.setCustomer(customer);
 		tripBooking.setDriver(driver1);
 		tripBooking.setStatus(TripStatus.CONFIRMED);
