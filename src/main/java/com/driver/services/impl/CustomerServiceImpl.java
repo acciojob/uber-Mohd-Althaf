@@ -11,6 +11,8 @@ import com.driver.repository.DriverRepository;
 import com.driver.repository.TripBookingRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -46,17 +48,18 @@ public class CustomerServiceImpl implements CustomerService {
 	public TripBooking bookTrip(int customerId, String fromLocation, String toLocation, int distanceInKm) throws Exception{
 		//Book the driver with lowest driverId who is free (cab available variable is Boolean.TRUE). If no driver is available, throw "No cab available!" exception
 		//Avoid using SQL query
-		List<Driver> driverList = driverRepository2.findAllByOrderByIdAsc();
+		List<Driver> drivers = driverRepository2.findAll();
+		Collections.sort(drivers, Comparator.comparingInt(Driver::getDriverId));
 		Driver driver1 = null;
-		for(Driver driver:driverList){
+		for ( Driver driver: drivers) {
 			if(driver.getCab().getAvailable()){
-				driver1 = driver;
+				driver1 =driver;
 				break;
 			}
-		}
 
-		if(driver1==null){
-			throw new Exception("No cab available!");
+		}
+		if(driver1 == null){
+			throw  new Exception("No cab available!");
 		}
 		TripBooking tripBooking = new TripBooking(fromLocation,toLocation,distanceInKm);
 		Customer customer = customerRepository2.findById(customerId).get();
