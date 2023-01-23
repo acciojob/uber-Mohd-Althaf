@@ -75,6 +75,10 @@ public class TripBooking {
         this.bill = bill;
     }
 
+    public void setTripBookingId(int tripBookingId) {
+        this.tripBookingId = tripBookingId;
+    }
+
     @ManyToOne
     @JoinColumn
     private Customer customer;

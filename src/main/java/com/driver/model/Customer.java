@@ -44,6 +44,10 @@ public class Customer {
         this.password = password;
     }
 
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     private List<TripBooking> tripBookingList;
 

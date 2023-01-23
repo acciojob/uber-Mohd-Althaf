@@ -49,7 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
 		List<Driver> driverList = driverRepository2.findAllByOrderByIdAsc();
 		Driver driver1 = null;
 		for(Driver driver:driverList){
-			if(driver.getCab().isAvailable()){
+			if(driver.getCab().getAvailable()){
 				driver1 = driver;
 				break;
 			}

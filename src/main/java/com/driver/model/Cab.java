@@ -31,11 +31,15 @@ public class Cab {
         return perKmRate;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setPerKmRate(int perKmRate) {
         this.perKmRate = perKmRate;
     }
 
-    public boolean isAvailable() {
+    public boolean getAvailable() {
         return available;
     }
 

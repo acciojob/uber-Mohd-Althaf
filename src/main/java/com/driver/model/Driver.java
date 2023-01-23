@@ -41,6 +41,10 @@ public class Driver {
         return password;
     }
 
+    public void setDriverId(int driverId) {
+        this.driverId = driverId;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
